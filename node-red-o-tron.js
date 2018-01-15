@@ -20,8 +20,10 @@ module.exports = function(RED) {
       display.lcd.setContrast(contrast);
       display.lcd.clear();
 
-      if(content !== undefined) {
-        content = payload.content;
+      if(payload.content !== undefined) {
+        var content = payload.content;
+        this.debug(payload);
+
         for (var i = 0, len = content.length; i < len; i++) {
           var line = content[i];
           display.lcd.setCursorPosition(0, i);
