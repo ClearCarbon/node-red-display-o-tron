@@ -20,9 +20,10 @@ module.exports = function(RED) {
       display.lcd.setContrast(contrast);
       display.lcd.clear();
 
+      this.debug(payload);
+
       if(payload.content !== undefined) {
         var content = payload.content;
-        this.debug(payload);
 
         for (var i = 0, len = content.length; i < len; i++) {
           var line = content[i];
