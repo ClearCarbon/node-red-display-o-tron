@@ -8,20 +8,16 @@ module.exports = function(RED) {
     var display = new JVSDisplayOTron.DOT3k();
     var backlight = new Backlight(displayOTron);
 
-    function getValue(value, default) {
-      if (value === undefined) {
-        return default;
-      } else {
-        return value;
-      }
-    }
-
     node.on('input', function(msg) {
-      payload = msg.payload;
+      var payload = msg.payload;
 
       backlight.setToRGB(255, 255, 255);
 
-      contrast = getValue(payload.contrast, 50);
+      var contrast = 50;
+      if (payload.contrast !== undefined) {
+        contrast = payload.contrast;
+      }
+
       display.setContrast(contrast);
 
       if(content !== undefined) {
@@ -35,6 +31,7 @@ module.exports = function(RED) {
       }
 
     });
+
   }
 
   RED.nodes.registerType("display-o-tron", DisplayOTron);
