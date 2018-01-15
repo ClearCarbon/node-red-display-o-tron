@@ -10,7 +10,7 @@ module.exports = function(RED) {
     node.on('input', function(msg) {
       var payload = msg.payload;
 
-      display.backlight.setToRGB(255, 255, 255);
+      // display.backlight.setToRGB(255, 255, 255);
 
       var contrast = 50;
       if (payload.contrast !== undefined) {
