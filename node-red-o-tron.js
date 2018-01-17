@@ -1,38 +1,23 @@
-var JVSDisplayOTron = require('jvsdisplayotron');
+"use strict"
+
+var JVSDisplayOTron = require("jvsdisplayotron");
+var {Display} = require("./display");
 
 module.exports = function(RED) {
 
   function DisplayOTron(config) {
     RED.nodes.createNode(this, config);
     var node = this;
-    var display = new JVSDisplayOTron.DOT3k();
+
+    var display = new Display({});
 
     node.on('input', function(msg) {
-      var payload = msg.payload;
+      var defaults = {"contrast": 50, "backlight": [255, 255, 255]};
+      let config = {...defaults, ...msg.config};
 
-      display.backlight.setToRGB(255, 255, 255);
-
-      var contrast = 50;
-      if (payload.contrast !== undefined) {
-        contrast = payload.contrast;
-      }
-
-      display.lcd.setContrast(contrast);
-      display.lcd.clear();
-
-      this.debug(payload);
-
-      if(payload.content !== undefined) {
-        var content = payload.content;
-
-        for (var i = 0, len = content.length; i < len; i++) {
-          var line = content[i];
-          display.lcd.setCursorPosition(0, i);
-          display.lcd.write(line);
-          this.debug("Wrote line " + line);
-        }
-      }
-
+      display.setBacklight(config.backlight);
+      display.setContrast(config.contrast);
+      display.writeContent(msg.payload);
     });
 
   }
