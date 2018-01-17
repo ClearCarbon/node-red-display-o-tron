@@ -25,6 +25,7 @@ class Display {
   }
 
   setContrast(contrast) {
+    this.node.log("contrast: " + contrast);
     this.display.lcd.setContrast(contrast)
   }
 
