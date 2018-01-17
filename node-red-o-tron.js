@@ -9,7 +9,7 @@ module.exports = function(RED) {
     RED.nodes.createNode(this, config);
     var node = this;
 
-    var display = new Display({});
+    var display = new Display(new DisplayOTron.DOT3k());
 
     node.on('input', function(msg) {
       var defaults = {"contrast": 50, "backlight": [255, 255, 255]};
