@@ -6,6 +6,7 @@ class Display {
 
   constructor(display_o_tron, node) {
     this.display = display_o_tron;
+    this.node = node
   }
 
   writeContent(content) {
