@@ -1,9 +1,11 @@
 <script type="text/javascript">
     RED.nodes.registerType('display-o-tron',{
         category: 'function',
-        color: '#a6bbcf',
+        color: '#d01c12',
         defaults: {
-            name: {value:""}
+            name: {value:"Display-O-Tron"},
+            backlight-color: '#fff',
+            contrast: 50
         },
         inputs:1,
         outputs:1,
@@ -16,11 +18,27 @@
 
 <script type="text/x-red" data-template-name="display-o-tron">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row">
+      <label for="node-input-backlight-color"><i class="icon-tag"></i> Backlight Color</label>
+      <input type="text" id="node-input-backlight-color" placeholder="#fff">
+    </div>
+    <div class="form-row">
+      <label for="node-input-contrast"><i class="icon-tag"></i> LCD Contrast</label>
+      <input type="text" id="node-input-contrast" placeholder="50">
+    </div>
+
 </script>
 
 <script type="text/x-red" data-help-name="display-o-tron">
-
+  <p>Control Display-O-Tron Raspberry Pi Hats.</p>
+  <h3>Inputs</h3>
+      <dl class="message-properties">
+      <dt>payload
+          <span class="property-type">array | contents</span>
+      </dt>
+  <h3>Details</h3>
+  <p>Pass a payload with content set to an array of 3 strings, one for each line on the LCD.</p>
 </script>
