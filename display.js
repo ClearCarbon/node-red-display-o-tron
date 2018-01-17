@@ -12,7 +12,7 @@ class Display {
     this.display.lcd.clear();
 
     if(content !== undefined) {
-      for (var i = 0, len = content; i < len; i++) {
+      for (var i = 0, len = content.length; i < len; i++) {
         var line = content[i];
         this.display.lcd.setCursorPosition(0, i);
         this.display.lcd.write(line);
