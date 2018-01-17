@@ -12,12 +12,12 @@ class Display {
   writeContent(content) {
     this.display.lcd.clear();
 
-    node.log("content: " + content);
+    this.node.log("content: " + content);
     if(content !== undefined) {
-      node.log("Content length: " + content.length);
+      this.node.log("Content length: " + content.length);
       for (var i = 0, len = content.length; i < len; i++) {
         var line = content[i];
-        node.log("Write line: " + line);
+        this.node.log("Write line: " + line);
         this.display.lcd.setCursorPosition(0, i);
         this.display.lcd.write(line);
       }
