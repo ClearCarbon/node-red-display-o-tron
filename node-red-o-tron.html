@@ -1,11 +1,11 @@
 <script type="text/javascript">
     RED.nodes.registerType('display-o-tron',{
         category: 'function',
-        color: '#d01c12',
+        color: '#eaafff',
         defaults: {
-            name: {value:"Display-O-Tron"},
-            backlight-color: '#fff',
-            contrast: 50
+          name: {value: "Display-O-Tron"},
+          backlight: {value: '#fff'},
+          contrast: {value: 50}
         },
         inputs:1,
         outputs:1,
@@ -22,8 +22,8 @@
       <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-      <label for="node-input-backlight-color"><i class="icon-tag"></i> Backlight Color</label>
-      <input type="text" id="node-input-backlight-color" placeholder="#fff">
+      <label for="node-input-backlight"><i class="icon-tag"></i> Backlight Color</label>
+      <input type="text" id="node-input-backlight" placeholder="#ffffff">
     </div>
     <div class="form-row">
       <label for="node-input-contrast"><i class="icon-tag"></i> LCD Contrast</label>
@@ -34,11 +34,29 @@
 
 <script type="text/x-red" data-help-name="display-o-tron">
   <p>Control Display-O-Tron Raspberry Pi Hats.</p>
+
   <h3>Inputs</h3>
-      <dl class="message-properties">
-      <dt>payload
-          <span class="property-type">array | contents</span>
-      </dt>
-  <h3>Details</h3>
-  <p>Pass a payload with content set to an array of 3 strings, one for each line on the LCD.</p>
+
+  <dl class="message-properties">
+    <dt>payload
+        <span class="property-type">array</span>
+    </dt>
+    <dd>Pass a payload with content set to an array of 3 strings, one for each line on the LCD.</dd>
+  </dl>
+
+  <dl class="message-properties">
+    <dt>config.backlight
+        <span class="property-type">array | optional</span>
+    </dt>
+    <dd>Pass a config with the backlight set to an array of 3 integers 0-255, one for each color channel in RGB.</dd>
+  </dl>
+
+
+  <dl class="message-properties">
+    <dt>config.contrast
+        <span class="property-type">integer | optional</span>
+    </dt>
+    <dd>Pass a config with the contrast set as an integer between 1-100.</dd>
+  </dl>
+
 </script>
