@@ -13,7 +13,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
       var defaults = {"contrast": 50, "backlight": [255, 255, 255]};
-      let config = {...defaults, ...msg.config};
+      var config = Object.assign(defaults, msg.config);
 
       display.setBacklight(config.backlight);
       display.setContrast(config.contrast);
